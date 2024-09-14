@@ -1,8 +1,5 @@
-
-
-
 def calcular_promedio_ciudades(temperaturas, ciudades):
-    promedios_por_ciudad = {}  # Diccionario donde se almacenarán los promedios por ciudad.
+    promedios = []  # Lista para almacenar los promedios de cada ciudad.
 
     # Iterar sobre las ciudades
     for i in range(len(temperaturas)):  # 'i' representa el índice de la ciudad.
@@ -16,33 +13,36 @@ def calcular_promedio_ciudades(temperaturas, ciudades):
 
         # Calcular el promedio de temperatura de la ciudad 'i'
         promedio_ciudad = suma_total / dias_totales  # Promedio = Suma total de temperaturas / Total de días
-        promedios_por_ciudad[ciudades[i]] = promedio_ciudad  # Almacenamos el promedio en el diccionario con la ciudad como clave.
+        promedios.append(promedio_ciudad)  # Almacenamos el promedio en la lista.
 
-    return promedios_por_ciudad  # Devolvemos el diccionario con los promedios de todas las ciudades.
+    return promedios  # Devolvemos la lista con los promedios de todas las ciudades.
 
 # Datos de ejemplo:
 # 'temperaturas' es una lista que contiene, para cada ciudad, otra lista con las temperaturas registradas semana por semana.
 temperaturas = [
     [
-        [30, 31, 29, 32, 33, 31, 30],  # Ciudad 1, Semana 1
-        [29, 30, 31, 30, 32, 29, 31]  # Ciudad 1, Semana 2
+        [30, 31, 29, 32, 33, 31, 30],  # Quito, Semana 1
+        [29, 30, 31, 30, 32, 29, 31],  # Quito, Semana 2
+        [28, 29, 30, 32, 31, 30, 29]   # Quito, Semana 3
     ],
     [
-        [25, 26, 27, 24, 28, 26, 27],  # Ciudad 2, Semana 1
-        [26, 27, 25, 28, 27, 29, 26]  # Ciudad 2, Semana 2
+        [25, 26, 27, 24, 28, 26, 27],  # Manta , Semana 1
+        [26, 27, 25, 28, 27, 29, 26],  # Manta, Semana 2
+        [27, 28, 26, 25, 29, 28, 27]   # Manta, Semana 3
     ],
     [
-        [18, 19, 17, 20, 21, 18, 19],  # Ciudad 3, Semana 1
-        [19, 20, 21, 20, 22, 19, 18]  # Ciudad 3, Semana 2
+        [18, 19, 17, 20, 21, 18, 19],  # Santo domingo , Semana 1
+        [19, 20, 21, 20, 22, 19, 18],  # Santo domingo, Semana 2
+        [20, 21, 19, 22, 21, 20, 21]   # Santo domingo, Semana 3
     ]
 ]
 
 # 'ciudades' es una lista que contiene los nombres de las ciudades correspondientes a las temperaturas.
-ciudades = ["Ciudad 1", "Ciudad 2", "Ciudad 3"]
+ciudades = ["Quito", "Manta", "Santo domingo"]
 
 # Llamamos a la función para obtener el promedio de temperatura de cada ciudad
 promedios = calcular_promedio_ciudades(temperaturas, ciudades)
 
 # Imprimimos los promedios de cada ciudad
-for ciudad, promedio in promedios.items():
-    print(f"El promedio de temperatura en {ciudad} es {promedio:.2f}°C")  # Formateamos el promedio a 2 decimales.
+for i in range(len(ciudades)):
+    print(f"El promedio de temperatura en {ciudades[i]} es {promedios[i]:.2f}°C")  # Formateamos el promedio a 2 decimales.
